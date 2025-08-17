@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Química Interativo v5.2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-flask"></i> Simulador de Química Interativo v5.2</h1>
+        <nav>
+            <button id="nav-module1" class="nav-button active">
+                <i class="fas fa-atom"></i> Estrutura Atômica
+            </button>
+            <button id="nav-module2" class="nav-button">
+                <i class="fas fa-table"></i> Tabela Periódica
+            </button>
+            <button id="nav-module3" class="nav-button">
+                <i class="fas fa-balance-scale"></i> Matéria e Medidas
+            </button>
+            <button id="nav-module4" class="nav-button">
+                <i class="fas fa-calculator"></i> Ferramentas de Cálculo
+            </button>
+            <button id="nav-module5" class="nav-button">
+                <i class="fas fa-question-circle"></i> Quiz
+            </button>
+            <button id="nav-module6" class="nav-button">
+				<i class="fas fa-exchange-alt"></i> Balanceamento
+			</button>
+            <button id="nav-module7" class="nav-button">
+                <i class="fas fa-link"></i> Ligações Químicas
+            </button>
+            <!-- NOVO BOTÃO DO GLOSSÁRIO -->
+            <button id="nav-module8" class="nav-button">
+                <i class="fas fa-book"></i> Glossário
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Módulos 1 a 7 (sem alterações estruturais) -->
+        <div id="module1-content" class="module-content fade-in">
+            <div id="atom-builder">
+                <section class="panel" id="controls-panel">
+                    <h2><i class="fas fa-atom"></i> Controles do Átomo</h2>
+                    <div class="particle-control">
+                        <span>Prótons (p⁺)</span>
+                        <div class="buttons-container">
+                            <button id="remove-proton" class="control-button">−</button>
+                            <span id="proton-count" class="particle-count">0</span>
+                            <button id="add-proton" class="control-button">+</button>
+                        </div>
+                    </div>
+                    <div class="particle-control">
+                        <span>Nêutrons (n⁰)</span>
+                        <div class="buttons-container">
+                            <button id="remove-neutron" class="control-button">−</button>
+                            <span id="neutron-count" class="particle-count">0</span>
+                            <button id="add-neutron" class="control-button">+</button>
+                        </div>
+                    </div>
+                    <div class="particle-control">
+                        <span>Elétrons (e⁻)</span>
+                        <div class="buttons-container">
+                            <button id="remove-electron" class="control-button">−</button>
+                            <span id="electron-count" class="particle-count">0</span>
+                            <button id="add-electron" class="control-button">+</button>
+                        </div>
+                    </div>
+                    <button id="reset-button" class="action-button">
+                        <i class="fas fa-redo"></i> Reiniciar Átomo
+                    </button>
+                    <button id="random-element" class="action-button" style="background: var(--success-gradient);">
+                        <i class="fas fa-dice"></i> Elemento Aleatório
+                    </button>
+                    <button id="toggle-explanation-btn" class="action-button" style="background: var(--warning-gradient);">
+                        <i class="fas fa-lightbulb"></i> Mostrar Explicação
+                    </button>
+                    <div id="explanation-panel" class="hidden result-panel"></div>
+                </section>
+
+                <section class="panel" id="display-panel">
+                    <div id="atom-visualization">
+                        <div id="nucleus"></div>
+                        <div class="electron-shell"></div>
+                        <div class="electron-shell"></div>
+                        <div class="electron-shell"></div>
+                    </div>
+                    <div id="info-panel">
+                        <h2 id="element-name">Elemento Neutro</h2>
+                        <div id="element-symbol-container" style="font-size: 2em; text-align: center; margin: 20px 0;">
+                            <div><sup id="mass-number">0</sup><span id="element-symbol">X</span><sub id="atomic-number">0</sub></div>
+                        </div>
+                        <div id="element-charge-container" style="text-align: center; font-size: 1.2em;">
+                            Carga: <span id="element-charge">0</span>
+                        </div>
+                    </div>
+                    <div id="electron-configuration">
+                        <h3>Distribuição Eletrônica</h3>
+                        <p id="config-text">—</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-protons">0</div>
+                            <div class="stat-label">Prótons</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-neutrons">0</div>
+                            <div class="stat-label">Nêutrons</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-electrons">0</div>
+                            <div class="stat-label">Elétrons</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="stat-mass">0</div>
+                            <div class="stat-label">Massa</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div id="module2-content" class="module-content hidden">
+            <section class="panel">
+                <h2><i class="fas fa-table"></i> Tabela Periódica Interativa</h2>
+                <div id="periodic-table-container"></div>
+            </section>
+        </div>
+
+        <div id="module3-content" class="module-content hidden">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px;">
+                <section class="panel">
+                    <h2 class="module-header-3"><i class="fas fa-balance-scale"></i> Classificação de Substâncias</h2>
+                    <input type="text" id="substance-input" placeholder="Digite uma substância (ex: H2O, Fe, O2)">
+                    <button id="classify-substance" class="action-button">Classificar Substância</button>
+                    <div id="substance-result" class="calculation-result hidden"></div>
+                </section>
+
+                <section class="panel">
+                    <h2 class="module-header-3"><i class="fas fa-flask"></i> Conversões de Unidades</h2>
+                    <div style="margin-bottom: 15px;">
+                        <label>Valor:</label>
+                        <input type="number" id="conversion-value" step="any">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label>De:</label>
+                        <select id="conversion-from">
+                            <option value="g">Gramas (g)</option>
+                            <option value="kg">Quilogramas (kg)</option>
+                            <option value="mg">Miligramas (mg)</option>
+                            <option value="mol">Mols</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label>Para:</label>
+                        <select id="conversion-to">
+                            <option value="g">Gramas (g)</option>
+                            <option value="kg">Quilogramas (kg)</option>
+                            <option value="mg">Miligramas (mg)</option>
+                            <option value="mol">Mols</option>
+                        </select>
+                    </div>
+                    <button id="convert-units" class="action-button">Converter</button>
+                    <div id="conversion-result" class="calculation-result hidden"></div>
+                </section>
+            </div>
+        </div>
+
+        <div id="module4-content" class="module-content hidden">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px;">
+                <section class="panel">
+                    <h2 class="module-header-4"><i class="fas fa-calculator"></i> Cálculo de Massa Molar</h2>
+                    <input type="text" id="formula-input" placeholder="Digite a fórmula (ex: H2SO4)">
+                    <button id="calculate-molar-mass" class="action-button">Calcular Massa Molar</button>
+                    <div id="molar-mass-result" class="calculation-result hidden"></div>
+                </section>
+
+                <section class="panel">
+                    <h2 class="module-header-4"><i class="fas fa-vial"></i> Cálculos Estequiométricos</h2>
+                    <input type="text" id="reactant-formula" placeholder="Fórmula do reagente (Ex: H2)">
+                    <input type="text" id="product-formula" placeholder="Fórmula do produto (Ex: H2O)">
+                    <input type="number" id="reactant-mass" step="any" placeholder="Massa do reagente (g)">
+                    <button id="calculate-stoichiometry" class="action-button">Calcular (proporção 1:1)</button>
+                    <div id="stoichiometry-result" class="calculation-result hidden"></div>
+                </section>
+
+                <section class="panel">
+                    <h2 class="module-header-4"><i class="fas fa-thermometer-half"></i> Simulador de Reações</h2>
+                    <input type="text" id="reaction-input" placeholder="Ex: 2H2 + O2 -> 2H2O">
+                    <button id="simulate-reaction" class="action-button">Simular Reação</button>
+                    <div id="reaction-result" class="calculation-result hidden"></div>
+                </section>
+            </div>
+        </div>
+
+        <div id="module5-content" class="module-content hidden">
+            <section class="panel">
+                <h2 class="module-header-5"><i class="fas fa-question-circle"></i> Quiz de Química</h2>
+                <div id="quiz-header">
+                    <span id="quiz-progress">Questão 1 de 10</span>
+                    <span id="quiz-score">Pontuação: 0</span>
+                </div>
+                <div id="quiz-question"></div>
+                <div id="quiz-options"></div>
+                <div id="quiz-feedback" class="hidden"></div>
+                <button id="next-question" class="action-button hidden">Próxima Questão</button>
+                <button id="start-quiz" class="action-button">Iniciar Quiz</button>
+                <div id="quiz-final-result" class="hidden">
+                    <h3>Quiz Finalizado!</h3>
+                    <div id="final-score-text"></div>
+                    <button id="restart-quiz" class="action-button">Reiniciar Quiz</button>
+                </div>
+            </section>
+        </div>
+		
+        <div id="module6-content" class="module-content hidden">
+            <section class="panel">
+                <h2 class="module-header-6"><i class="fas fa-exchange-alt"></i> Balanceamento de Equações</h2>
+                <p>Ajuste os coeficientes para que a quantidade de cada átomo seja a mesma nos reagentes e nos produtos.</p>
+                <div id="equation-container"></div>
+                <div id="balance-results">
+                    <div id="reactants-count" class="result-panel"><h3>Reagentes</h3></div>
+                    <div id="products-count" class="result-panel"><h3>Produtos</h3></div>
+                </div>
+                <div id="balance-feedback" class="calculation-result hidden"></div>
+                <button id="new-equation-btn" class="action-button" style="background: var(--success-gradient);">
+                    <i class="fas fa-random"></i> Nova Equação
+                </button>
+            </section>
+        </div>
+
+        <div id="module7-content" class="module-content hidden">
+            <section class="panel">
+                <h2 class="module-header-7"><i class="fas fa-link"></i> Simulador de Ligações Químicas</h2>
+                <p>Selecione dois elementos da tabela abaixo para ver como eles se ligam.</p>
+                <div id="bond-simulator-layout">
+                    <div id="bond-element-selection">
+                        <h3>Selecione os Elementos</h3>
+                        <div id="mini-periodic-table"></div>
+                    </div>
+                    <div id="bond-reaction-area">
+                        <h3>Área de Reação</h3>
+                        <div id="atom-slots-container">
+                            <div class="atom-slot" id="atom-slot-1">
+                                <p>Elemento 1</p>
+                            </div>
+                            <div id="plus-symbol">+</div>
+                            <div class="atom-slot" id="atom-slot-2">
+                                <p>Elemento 2</p>
+                            </div>
+                        </div>
+                        <div class="action-buttons-center">
+                            <button id="combine-atoms-btn" class="action-button">
+                                <i class="fas fa-magic"></i> Combinar
+                            </button>
+                            <button id="reset-bond-btn" class="action-button" style="background: var(--danger-gradient);">
+                                <i class="fas fa-redo"></i> Reiniciar
+                            </button>
+                        </div>
+                        <div id="bond-result" class="calculation-result hidden"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- NOVO MÓDULO 8: GLOSSÁRIO -->
+        <div id="module8-content" class="module-content hidden">
+            <section class="panel">
+                <h2 class="module-header-8"><i class="fas fa-book"></i> Glossário de Química</h2>
+                <p>Clique em um termo para ver sua definição e um exemplo.</p>
+                <div id="glossary-container">
+                    <!-- Termos serão inseridos aqui via JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal-overlay" class="hidden">
+        <div id="modal-content">
+            <button id="modal-close-btn">&times;</button>
+            <div id="modal-details-content"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
