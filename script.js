@@ -1,6 +1,6 @@
 // Aguardar carregamento completo do DOM
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Simulador de Química Interativo v6.0 carregado com sucesso!');
+    console.log('Simulador de Química Interativo v6.1 carregado com sucesso!');
 
     // --- SELEÇÃO DOS ELEMENTOS DA MODAL ---
     const modalOverlay = document.getElementById('modal-overlay');
@@ -9,124 +9,124 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- BANCO DE DADOS COMPLETO (118 ELEMENTOS) ---
     const ELEMENTS_DATA = [
-        { number: 1, name: "Hidrogênio", symbol: "H", group: 1, period: 1, mass: 1.008, category: "diatomic-nonmetal" },
-        { number: 2, name: "Hélio", symbol: "He", group: 18, period: 1, mass: 4.0026, category: "noble-gas" },
-        { number: 3, name: "Lítio", symbol: "Li", group: 1, period: 2, mass: 6.94, category: "alkali" },
-        { number: 4, name: "Berílio", symbol: "Be", group: 2, period: 2, mass: 9.0122, category: "alkaline-earth" },
-        { number: 5, name: "Boro", symbol: "B", group: 13, period: 2, mass: 10.81, category: "metalloid" },
-        { number: 6, name: "Carbono", symbol: "C", group: 14, period: 2, mass: 12.011, category: "polyatomic-nonmetal" },
-        { number: 7, name: "Nitrogênio", symbol: "N", group: 15, period: 2, mass: 14.007, category: "diatomic-nonmetal" },
-        { number: 8, name: "Oxigênio", symbol: "O", group: 16, period: 2, mass: 15.999, category: "diatomic-nonmetal" },
-        { number: 9, name: "Flúor", symbol: "F", group: 17, period: 2, mass: 18.998, category: "diatomic-nonmetal" },
-        { number: 10, name: "Neônio", symbol: "Ne", group: 18, period: 2, mass: 20.180, category: "noble-gas" },
-        { number: 11, name: "Sódio", symbol: "Na", group: 1, period: 3, mass: 22.990, category: "alkali" },
-        { number: 12, name: "Magnésio", symbol: "Mg", group: 2, period: 3, mass: 24.305, category: "alkaline-earth" },
-        { number: 13, name: "Alumínio", symbol: "Al", group: 13, period: 3, mass: 26.982, category: "post-transition" },
-        { number: 14, name: "Silício", symbol: "Si", group: 14, period: 3, mass: 28.085, category: "metalloid" },
-        { number: 15, name: "Fósforo", symbol: "P", group: 15, period: 3, mass: 30.974, category: "polyatomic-nonmetal" },
-        { number: 16, name: "Enxofre", symbol: "S", group: 16, period: 3, mass: 32.06, category: "polyatomic-nonmetal" },
-        { number: 17, name: "Cloro", symbol: "Cl", group: 17, period: 3, mass: 35.45, category: "diatomic-nonmetal" },
-        { number: 18, name: "Argônio", symbol: "Ar", group: 18, period: 3, mass: 39.948, category: "noble-gas" },
-        { number: 19, name: "Potássio", symbol: "K", group: 1, period: 4, mass: 39.098, category: "alkali" },
-        { number: 20, name: "Cálcio", symbol: "Ca", group: 2, period: 4, mass: 40.078, category: "alkaline-earth" },
-        { number: 21, name: "Escândio", symbol: "Sc", group: 3, period: 4, mass: 44.956, category: "transition" },
-        { number: 22, name: "Titânio", symbol: "Ti", group: 4, period: 4, mass: 47.867, category: "transition" },
-        { number: 23, name: "Vanádio", symbol: "V", group: 5, period: 4, mass: 50.942, category: "transition" },
-        { number: 24, name: "Cromo", symbol: "Cr", group: 6, period: 4, mass: 51.996, category: "transition" },
-        { number: 25, name: "Manganês", symbol: "Mn", group: 7, period: 4, mass: 54.938, category: "transition" },
-        { number: 26, name: "Ferro", symbol: "Fe", group: 8, period: 4, mass: 55.845, category: "transition" },
-        { number: 27, name: "Cobalto", symbol: "Co", group: 9, period: 4, mass: 58.933, category: "transition" },
-        { number: 28, name: "Níquel", symbol: "Ni", group: 10, period: 4, mass: 58.693, category: "transition" },
-        { number: 29, name: "Cobre", symbol: "Cu", group: 11, period: 4, mass: 63.546, category: "transition" },
-        { number: 30, name: "Zinco", symbol: "Zn", group: 12, period: 4, mass: 65.38, category: "transition" },
-        { number: 31, name: "Gálio", symbol: "Ga", group: 13, period: 4, mass: 69.723, category: "post-transition" },
-        { number: 32, name: "Germânio", symbol: "Ge", group: 14, period: 4, mass: 72.63, category: "metalloid" },
-        { number: 33, name: "Arsênio", symbol: "As", group: 15, period: 4, mass: 74.922, category: "metalloid" },
-        { number: 34, name: "Selênio", symbol: "Se", group: 16, period: 4, mass: 78.971, category: "polyatomic-nonmetal" },
-        { number: 35, name: "Bromo", symbol: "Br", group: 17, period: 4, mass: 79.904, category: "diatomic-nonmetal" },
-        { number: 36, name: "Criptônio", symbol: "Kr", group: 18, period: 4, mass: 83.798, category: "noble-gas" },
-        { number: 37, name: "Rubídio", symbol: "Rb", group: 1, period: 5, mass: 85.468, category: "alkali" },
-        { number: 38, name: "Estrôncio", symbol: "Sr", group: 2, period: 5, mass: 87.62, category: "alkaline-earth" },
-        { number: 39, name: "Ítrio", symbol: "Y", group: 3, period: 5, mass: 88.906, category: "transition" },
-        { number: 40, name: "Zircônio", symbol: "Zr", group: 4, period: 5, mass: 91.224, category: "transition" },
-        { number: 41, name: "Nióbio", symbol: "Nb", group: 5, period: 5, mass: 92.906, category: "transition" },
-        { number: 42, name: "Molibdênio", symbol: "Mo", group: 6, period: 5, mass: 95.96, category: "transition" },
-        { number: 43, name: "Tecnécio", symbol: "Tc", group: 7, period: 5, mass: 98, category: "transition" },
-        { number: 44, name: "Rutênio", symbol: "Ru", group: 8, period: 5, mass: 101.07, category: "transition" },
-        { number: 45, name: "Ródio", symbol: "Rh", group: 9, period: 5, mass: 102.91, category: "transition" },
-        { number: 46, name: "Paládio", symbol: "Pd", group: 10, period: 5, mass: 106.42, category: "transition" },
-        { number: 47, name: "Prata", symbol: "Ag", group: 11, period: 5, mass: 107.87, category: "transition" },
-        { number: 48, name: "Cádmio", symbol: "Cd", group: 12, period: 5, mass: 112.41, category: "transition" },
-        { number: 49, name: "Índio", symbol: "In", group: 13, period: 5, mass: 114.82, category: "post-transition" },
-        { number: 50, name: "Estanho", symbol: "Sn", group: 14, period: 5, mass: 118.71, category: "post-transition" },
-        { number: 51, name: "Antimônio", symbol: "Sb", group: 15, period: 5, mass: 121.76, category: "metalloid" },
-        { number: 52, name: "Telúrio", symbol: "Te", group: 16, period: 5, mass: 127.60, category: "metalloid" },
-        { number: 53, name: "Iodo", symbol: "I", group: 17, period: 5, mass: 126.90, category: "diatomic-nonmetal" },
-        { number: 54, name: "Xenônio", symbol: "Xe", group: 18, period: 5, mass: 131.29, category: "noble-gas" },
-        { number: 55, name: "Césio", symbol: "Cs", group: 1, period: 6, mass: 132.91, category: "alkali" },
-        { number: 56, name: "Bário", symbol: "Ba", group: 2, period: 6, mass: 137.33, category: "alkaline-earth" },
-        { number: 57, name: "Lantânio", symbol: "La", group: 3, period: 9, mass: 138.91, category: "lanthanide" },
-        { number: 58, name: "Cério", symbol: "Ce", group: 4, period: 9, mass: 140.12, category: "lanthanide" },
-        { number: 59, name: "Praseodímio", symbol: "Pr", group: 5, period: 9, mass: 140.91, category: "lanthanide" },
-        { number: 60, name: "Neodímio", symbol: "Nd", group: 6, period: 9, mass: 144.24, category: "lanthanide" },
-        { number: 61, name: "Promécio", symbol: "Pm", group: 7, period: 9, mass: 145, category: "lanthanide" },
-        { number: 62, name: "Samário", symbol: "Sm", group: 8, period: 9, mass: 150.36, category: "lanthanide" },
-        { number: 63, name: "Európio", symbol: "Eu", group: 9, period: 9, mass: 151.96, category: "lanthanide" },
-        { number: 64, name: "Gadolínio", symbol: "Gd", group: 10, period: 9, mass: 157.25, category: "lanthanide" },
-        { number: 65, name: "Térbio", symbol: "Tb", group: 11, period: 9, mass: 158.93, category: "lanthanide" },
-        { number: 66, name: "Disprósio", symbol: "Dy", group: 12, period: 9, mass: 162.50, category: "lanthanide" },
-        { number: 67, name: "Hólmio", symbol: "Ho", group: 13, period: 9, mass: 164.93, category: "lanthanide" },
-        { number: 68, name: "Érbio", symbol: "Er", group: 14, period: 9, mass: 167.26, category: "lanthanide" },
-        { number: 69, name: "Túlio", symbol: "Tm", group: 15, period: 9, mass: 168.93, category: "lanthanide" },
-        { number: 70, name: "Itérbio", symbol: "Yb", group: 16, period: 9, mass: 173.05, category: "lanthanide" },
-        { number: 71, name: "Lutécio", symbol: "Lu", group: 17, period: 9, mass: 174.97, category: "lanthanide" },
-        { number: 72, name: "Háfnio", symbol: "Hf", group: 4, period: 6, mass: 178.49, category: "transition" },
-        { number: 73, name: "Tântalo", symbol: "Ta", group: 5, period: 6, mass: 180.95, category: "transition" },
-        { number: 74, name: "Tungstênio", symbol: "W", group: 6, period: 6, mass: 183.84, category: "transition" },
-        { number: 75, name: "Rênio", symbol: "Re", group: 7, period: 6, mass: 186.21, category: "transition" },
-        { number: 76, name: "Ósmio", symbol: "Os", group: 8, period: 6, mass: 190.23, category: "transition" },
-        { number: 77, name: "Irídio", symbol: "Ir", group: 9, period: 6, mass: 192.22, category: "transition" },
-        { number: 78, name: "Platina", symbol: "Pt", group: 10, period: 6, mass: 195.08, category: "transition" },
-        { number: 79, name: "Ouro", symbol: "Au", group: 11, period: 6, mass: 196.97, category: "transition" },
-        { number: 80, name: "Mercúrio", symbol: "Hg", group: 12, period: 6, mass: 200.59, category: "transition" },
-        { number: 81, name: "Tálio", symbol: "Tl", group: 13, period: 6, mass: 204.38, category: "post-transition" },
-        { number: 82, name: "Chumbo", symbol: "Pb", group: 14, period: 6, mass: 207.2, category: "post-transition" },
-        { number: 83, name: "Bismuto", symbol: "Bi", group: 15, period: 6, mass: 208.98, category: "post-transition" },
-        { number: 84, name: "Polônio", symbol: "Po", group: 16, period: 6, mass: 209, category: "metalloid" },
-        { number: 85, name: "Ástato", symbol: "At", group: 17, period: 6, mass: 210, category: "metalloid" },
-        { number: 86, name: "Radônio", symbol: "Rn", group: 18, period: 6, mass: 222, category: "noble-gas" },
-        { number: 87, name: "Frâncio", symbol: "Fr", group: 1, period: 7, mass: 223, category: "alkali" },
-        { number: 88, name: "Rádio", symbol: "Ra", group: 2, period: 7, mass: 226, category: "alkaline-earth" },
-        { number: 89, name: "Actínio", symbol: "Ac", group: 3, period: 10, mass: 227, category: "actinide" },
-        { number: 90, name: "Tório", symbol: "Th", group: 4, period: 10, mass: 232.04, category: "actinide" },
-        { number: 91, name: "Protactínio", symbol: "Pa", group: 5, period: 10, mass: 231.04, category: "actinide" },
-        { number: 92, name: "Urânio", symbol: "U", group: 6, period: 10, mass: 238.03, category: "actinide" },
-        { number: 93, name: "Neptúnio", symbol: "Np", group: 7, period: 10, mass: 237, category: "actinide" },
-        { number: 94, name: "Plutônio", symbol: "Pu", group: 8, period: 10, mass: 244, category: "actinide" },
-        { number: 95, name: "Amerício", symbol: "Am", group: 9, period: 10, mass: 243, category: "actinide" },
-        { number: 96, name: "Cúrio", symbol: "Cm", group: 10, period: 10, mass: 247, category: "actinide" },
-        { number: 97, name: "Berquélio", symbol: "Bk", group: 11, period: 10, mass: 247, category: "actinide" },
-        { number: 98, name: "Califórnio", symbol: "Cf", group: 12, period: 10, mass: 251, category: "actinide" },
-        { number: 99, name: "Einstênio", symbol: "Es", group: 13, period: 10, mass: 252, category: "actinide" },
-        { number: 100, name: "Férmio", symbol: "Fm", group: 14, period: 10, mass: 257, category: "actinide" },
-        { number: 101, name: "Mendelévio", symbol: "Md", group: 15, period: 10, mass: 258, category: "actinide" },
-        { number: 102, name: "Nobélio", symbol: "No", group: 16, period: 10, mass: 259, category: "actinide" },
-        { number: 103, name: "Laurêncio", symbol: "Lr", group: 17, period: 10, mass: 262, category: "actinide" },
-        { number: 104, name: "Rutherfórdio", symbol: "Rf", group: 4, period: 7, mass: 267, category: "transition" },
-        { number: 105, name: "Dúbnio", symbol: "Db", group: 5, period: 7, mass: 268, category: "transition" },
-        { number: 106, name: "Seabórgio", symbol: "Sg", group: 6, period: 7, mass: 271, category: "transition" },
-        { number: 107, name: "Bóhrio", symbol: "Bh", group: 7, period: 7, mass: 272, category: "transition" },
-        { number: 108, name: "Hássio", symbol: "Hs", group: 8, period: 7, mass: 277, category: "transition" },
-        { number: 109, name: "Meitnério", symbol: "Mt", group: 9, period: 7, mass: 276, category: "unknown" },
-        { number: 110, name: "Darmstádio", symbol: "Ds", group: 10, period: 7, mass: 281, category: "unknown" },
-        { number: 111, name: "Roentgênio", symbol: "Rg", group: 11, period: 7, mass: 280, category: "unknown" },
-        { number: 112, name: "Copernício", symbol: "Cn", group: 12, period: 7, mass: 285, category: "transition" },
-        { number: 113, name: "Nihônio", symbol: "Nh", group: 13, period: 7, mass: 284, category: "unknown" },
-        { number: 114, name: "Fleróvio", symbol: "Fl", group: 14, period: 7, mass: 289, category: "unknown" },
-        { number: 115, name: "Moscóvio", symbol: "Mc", group: 15, period: 7, mass: 288, category: "unknown" },
-        { number: 116, name: "Livermório", symbol: "Lv", group: 16, period: 7, mass: 293, category: "unknown" },
-        { number: 117, name: "Tenesso", symbol: "Ts", group: 17, period: 7, mass: 294, category: "unknown" },
-        { number: 118, name: "Oganessônio", symbol: "Og", group: 18, period: 7, mass: 294, category: "unknown" }
+        { number: 1, name: "Hidrogênio", symbol: "H", group: 1, period: 1, mass: 1.008, category: "diatomic-nonmetal", electronegativity: 2.20 },
+        { number: 2, name: "Hélio", symbol: "He", group: 18, period: 1, mass: 4.0026, category: "noble-gas", electronegativity: null },
+        { number: 3, name: "Lítio", symbol: "Li", group: 1, period: 2, mass: 6.94, category: "alkali", electronegativity: 0.98 },
+        { number: 4, name: "Berílio", symbol: "Be", group: 2, period: 2, mass: 9.0122, category: "alkaline-earth", electronegativity: 1.57 },
+        { number: 5, name: "Boro", symbol: "B", group: 13, period: 2, mass: 10.81, category: "metalloid", electronegativity: 2.04 },
+        { number: 6, name: "Carbono", symbol: "C", group: 14, period: 2, mass: 12.011, category: "polyatomic-nonmetal", electronegativity: 2.55 },
+        { number: 7, name: "Nitrogênio", symbol: "N", group: 15, period: 2, mass: 14.007, category: "diatomic-nonmetal", electronegativity: 3.04 },
+        { number: 8, name: "Oxigênio", symbol: "O", group: 16, period: 2, mass: 15.999, category: "diatomic-nonmetal", electronegativity: 3.44 },
+        { number: 9, name: "Flúor", symbol: "F", group: 17, period: 2, mass: 18.998, category: "diatomic-nonmetal", electronegativity: 3.98 },
+        { number: 10, name: "Neônio", symbol: "Ne", group: 18, period: 2, mass: 20.180, category: "noble-gas", electronegativity: null },
+        { number: 11, name: "Sódio", symbol: "Na", group: 1, period: 3, mass: 22.990, category: "alkali", electronegativity: 0.93 },
+        { number: 12, name: "Magnésio", symbol: "Mg", group: 2, period: 3, mass: 24.305, category: "alkaline-earth", electronegativity: 1.31 },
+        { number: 13, name: "Alumínio", symbol: "Al", group: 13, period: 3, mass: 26.982, category: "post-transition", electronegativity: 1.61 },
+        { number: 14, name: "Silício", symbol: "Si", group: 14, period: 3, mass: 28.085, category: "metalloid", electronegativity: 1.90 },
+        { number: 15, name: "Fósforo", symbol: "P", group: 15, period: 3, mass: 30.974, category: "polyatomic-nonmetal", electronegativity: 2.19 },
+        { number: 16, name: "Enxofre", symbol: "S", group: 16, period: 3, mass: 32.06, category: "polyatomic-nonmetal", electronegativity: 2.58 },
+        { number: 17, name: "Cloro", symbol: "Cl", group: 17, period: 3, mass: 35.45, category: "diatomic-nonmetal", electronegativity: 3.16 },
+        { number: 18, name: "Argônio", symbol: "Ar", group: 18, period: 3, mass: 39.948, category: "noble-gas", electronegativity: null },
+        { number: 19, name: "Potássio", symbol: "K", group: 1, period: 4, mass: 39.098, category: "alkali", electronegativity: 0.82 },
+        { number: 20, name: "Cálcio", symbol: "Ca", group: 2, period: 4, mass: 40.078, category: "alkaline-earth", electronegativity: 1.00 },
+        { number: 21, name: "Escândio", symbol: "Sc", group: 3, period: 4, mass: 44.956, category: "transition", electronegativity: 1.36 },
+        { number: 22, name: "Titânio", symbol: "Ti", group: 4, period: 4, mass: 47.867, category: "transition", electronegativity: 1.54 },
+        { number: 23, name: "Vanádio", symbol: "V", group: 5, period: 4, mass: 50.942, category: "transition", electronegativity: 1.63 },
+        { number: 24, name: "Cromo", symbol: "Cr", group: 6, period: 4, mass: 51.996, category: "transition", electronegativity: 1.66 },
+        { number: 25, name: "Manganês", symbol: "Mn", group: 7, period: 4, mass: 54.938, category: "transition", electronegativity: 1.55 },
+        { number: 26, name: "Ferro", symbol: "Fe", group: 8, period: 4, mass: 55.845, category: "transition", electronegativity: 1.83 },
+        { number: 27, name: "Cobalto", symbol: "Co", group: 9, period: 4, mass: 58.933, category: "transition", electronegativity: 1.88 },
+        { number: 28, name: "Níquel", symbol: "Ni", group: 10, period: 4, mass: 58.693, category: "transition", electronegativity: 1.91 },
+        { number: 29, name: "Cobre", symbol: "Cu", group: 11, period: 4, mass: 63.546, category: "transition", electronegativity: 1.90 },
+        { number: 30, name: "Zinco", symbol: "Zn", group: 12, period: 4, mass: 65.38, category: "transition", electronegativity: 1.65 },
+        { number: 31, name: "Gálio", symbol: "Ga", group: 13, period: 4, mass: 69.723, category: "post-transition", electronegativity: 1.81 },
+        { number: 32, name: "Germânio", symbol: "Ge", group: 14, period: 4, mass: 72.63, category: "metalloid", electronegativity: 2.01 },
+        { number: 33, name: "Arsênio", symbol: "As", group: 15, period: 4, mass: 74.922, category: "metalloid", electronegativity: 2.18 },
+        { number: 34, name: "Selênio", symbol: "Se", group: 16, period: 4, mass: 78.971, category: "polyatomic-nonmetal", electronegativity: 2.55 },
+        { number: 35, name: "Bromo", symbol: "Br", group: 17, period: 4, mass: 79.904, category: "diatomic-nonmetal", electronegativity: 2.96 },
+        { number: 36, name: "Criptônio", symbol: "Kr", group: 18, period: 4, mass: 83.798, category: "noble-gas", electronegativity: 3.00 },
+        { number: 37, name: "Rubídio", symbol: "Rb", group: 1, period: 5, mass: 85.468, category: "alkali", electronegativity: 0.82 },
+        { number: 38, name: "Estrôncio", symbol: "Sr", group: 2, period: 5, mass: 87.62, category: "alkaline-earth", electronegativity: 0.95 },
+        { number: 39, name: "Ítrio", symbol: "Y", group: 3, period: 5, mass: 88.906, category: "transition", electronegativity: 1.22 },
+        { number: 40, name: "Zircônio", symbol: "Zr", group: 4, period: 5, mass: 91.224, category: "transition", electronegativity: 1.33 },
+        { number: 41, name: "Nióbio", symbol: "Nb", group: 5, period: 5, mass: 92.906, category: "transition", electronegativity: 1.6 },
+        { number: 42, name: "Molibdênio", symbol: "Mo", group: 6, period: 5, mass: 95.96, category: "transition", electronegativity: 2.16 },
+        { number: 43, name: "Tecnécio", symbol: "Tc", group: 7, period: 5, mass: 98, category: "transition", electronegativity: 1.9 },
+        { number: 44, name: "Rutênio", symbol: "Ru", group: 8, period: 5, mass: 101.07, category: "transition", electronegativity: 2.2 },
+        { number: 45, name: "Ródio", symbol: "Rh", group: 9, period: 5, mass: 102.91, category: "transition", electronegativity: 2.28 },
+        { number: 46, name: "Paládio", symbol: "Pd", group: 10, period: 5, mass: 106.42, category: "transition", electronegativity: 2.20 },
+        { number: 47, name: "Prata", symbol: "Ag", group: 11, period: 5, mass: 107.87, category: "transition", electronegativity: 1.93 },
+        { number: 48, name: "Cádmio", symbol: "Cd", group: 12, period: 5, mass: 112.41, category: "transition", electronegativity: 1.69 },
+        { number: 49, name: "Índio", symbol: "In", group: 13, period: 5, mass: 114.82, category: "post-transition", electronegativity: 1.78 },
+        { number: 50, name: "Estanho", symbol: "Sn", group: 14, period: 5, mass: 118.71, category: "post-transition", electronegativity: 1.96 },
+        { number: 51, name: "Antimônio", symbol: "Sb", group: 15, period: 5, mass: 121.76, category: "metalloid", electronegativity: 2.05 },
+        { number: 52, name: "Telúrio", symbol: "Te", group: 16, period: 5, mass: 127.60, category: "metalloid", electronegativity: 2.1 },
+        { number: 53, name: "Iodo", symbol: "I", group: 17, period: 5, mass: 126.90, category: "diatomic-nonmetal", electronegativity: 2.66 },
+        { number: 54, name: "Xenônio", symbol: "Xe", group: 18, period: 5, mass: 131.29, category: "noble-gas", electronegativity: 2.6 },
+        { number: 55, name: "Césio", symbol: "Cs", group: 1, period: 6, mass: 132.91, category: "alkali", electronegativity: 0.79 },
+        { number: 56, name: "Bário", symbol: "Ba", group: 2, period: 6, mass: 137.33, category: "alkaline-earth", electronegativity: 0.89 },
+        { number: 57, name: "Lantânio", symbol: "La", group: 3, period: 9, mass: 138.91, category: "lanthanide", electronegativity: 1.1 },
+        { number: 58, name: "Cério", symbol: "Ce", group: 4, period: 9, mass: 140.12, category: "lanthanide", electronegativity: 1.12 },
+        { number: 59, name: "Praseodímio", symbol: "Pr", group: 5, period: 9, mass: 140.91, category: "lanthanide", electronegativity: 1.13 },
+        { number: 60, name: "Neodímio", symbol: "Nd", group: 6, period: 9, mass: 144.24, category: "lanthanide", electronegativity: 1.14 },
+        { number: 61, name: "Promécio", symbol: "Pm", group: 7, period: 9, mass: 145, category: "lanthanide", electronegativity: 1.13 },
+        { number: 62, name: "Samário", symbol: "Sm", group: 8, period: 9, mass: 150.36, category: "lanthanide", electronegativity: 1.17 },
+        { number: 63, name: "Európio", symbol: "Eu", group: 9, period: 9, mass: 151.96, category: "lanthanide", electronegativity: 1.2 },
+        { number: 64, name: "Gadolínio", symbol: "Gd", group: 10, period: 9, mass: 157.25, category: "lanthanide", electronegativity: 1.2 },
+        { number: 65, name: "Térbio", symbol: "Tb", group: 11, period: 9, mass: 158.93, category: "lanthanide", electronegativity: 1.1 },
+        { number: 66, name: "Disprósio", symbol: "Dy", group: 12, period: 9, mass: 162.50, category: "lanthanide", electronegativity: 1.22 },
+        { number: 67, name: "Hólmio", symbol: "Ho", group: 13, period: 9, mass: 164.93, category: "lanthanide", electronegativity: 1.23 },
+        { number: 68, name: "Érbio", symbol: "Er", group: 14, period: 9, mass: 167.26, category: "lanthanide", electronegativity: 1.24 },
+        { number: 69, name: "Túlio", symbol: "Tm", group: 15, period: 9, mass: 168.93, category: "lanthanide", electronegativity: 1.25 },
+        { number: 70, name: "Itérbio", symbol: "Yb", group: 16, period: 9, mass: 173.05, category: "lanthanide", electronegativity: 1.1 },
+        { number: 71, name: "Lutécio", symbol: "Lu", group: 17, period: 9, mass: 174.97, category: "lanthanide", electronegativity: 1.27 },
+        { number: 72, name: "Háfnio", symbol: "Hf", group: 4, period: 6, mass: 178.49, category: "transition", electronegativity: 1.3 },
+        { number: 73, name: "Tântalo", symbol: "Ta", group: 5, period: 6, mass: 180.95, category: "transition", electronegativity: 1.5 },
+        { number: 74, name: "Tungstênio", symbol: "W", group: 6, period: 6, mass: 183.84, category: "transition", electronegativity: 2.36 },
+        { number: 75, name: "Rênio", symbol: "Re", group: 7, period: 6, mass: 186.21, category: "transition", electronegativity: 1.9 },
+        { number: 76, name: "Ósmio", symbol: "Os", group: 8, period: 6, mass: 190.23, category: "transition", electronegativity: 2.2 },
+        { number: 77, name: "Irídio", symbol: "Ir", group: 9, period: 6, mass: 192.22, category: "transition", electronegativity: 2.20 },
+        { number: 78, name: "Platina", symbol: "Pt", group: 10, period: 6, mass: 195.08, category: "transition", electronegativity: 2.28 },
+        { number: 79, name: "Ouro", symbol: "Au", group: 11, period: 6, mass: 196.97, category: "transition", electronegativity: 2.54 },
+        { number: 80, name: "Mercúrio", symbol: "Hg", group: 12, period: 6, mass: 200.59, category: "transition", electronegativity: 2.00 },
+        { number: 81, name: "Tálio", symbol: "Tl", group: 13, period: 6, mass: 204.38, category: "post-transition", electronegativity: 1.62 },
+        { number: 82, name: "Chumbo", symbol: "Pb", group: 14, period: 6, mass: 207.2, category: "post-transition", electronegativity: 2.33 },
+        { number: 83, name: "Bismuto", symbol: "Bi", group: 15, period: 6, mass: 208.98, category: "post-transition", electronegativity: 2.02 },
+        { number: 84, name: "Polônio", symbol: "Po", group: 16, period: 6, mass: 209, category: "metalloid", electronegativity: 2.0 },
+        { number: 85, name: "Ástato", symbol: "At", group: 17, period: 6, mass: 210, category: "metalloid", electronegativity: 2.2 },
+        { number: 86, name: "Radônio", symbol: "Rn", group: 18, period: 6, mass: 222, category: "noble-gas", electronegativity: 2.2 },
+        { number: 87, name: "Frâncio", symbol: "Fr", group: 1, period: 7, mass: 223, category: "alkali", electronegativity: 0.7 },
+        { number: 88, name: "Rádio", symbol: "Ra", group: 2, period: 7, mass: 226, category: "alkaline-earth", electronegativity: 0.9 },
+        { number: 89, name: "Actínio", symbol: "Ac", group: 3, period: 10, mass: 227, category: "actinide", electronegativity: 1.1 },
+        { number: 90, name: "Tório", symbol: "Th", group: 4, period: 10, mass: 232.04, category: "actinide", electronegativity: 1.3 },
+        { number: 91, name: "Protactínio", symbol: "Pa", group: 5, period: 10, mass: 231.04, category: "actinide", electronegativity: 1.5 },
+        { number: 92, name: "Urânio", symbol: "U", group: 6, period: 10, mass: 238.03, category: "actinide", electronegativity: 1.38 },
+        { number: 93, name: "Neptúnio", symbol: "Np", group: 7, period: 10, mass: 237, category: "actinide", electronegativity: 1.36 },
+        { number: 94, name: "Plutônio", symbol: "Pu", group: 8, period: 10, mass: 244, category: "actinide", electronegativity: 1.28 },
+        { number: 95, name: "Amerício", symbol: "Am", group: 9, period: 10, mass: 243, category: "actinide", electronegativity: 1.13 },
+        { number: 96, name: "Cúrio", symbol: "Cm", group: 10, period: 10, mass: 247, category: "actinide", electronegativity: 1.28 },
+        { number: 97, name: "Berquélio", symbol: "Bk", group: 11, period: 10, mass: 247, category: "actinide", electronegativity: 1.3 },
+        { number: 98, name: "Califórnio", symbol: "Cf", group: 12, period: 10, mass: 251, category: "actinide", electronegativity: 1.3 },
+        { number: 99, name: "Einstênio", symbol: "Es", group: 13, period: 10, mass: 252, category: "actinide", electronegativity: 1.3 },
+        { number: 100, name: "Férmio", symbol: "Fm", group: 14, period: 10, mass: 257, category: "actinide", electronegativity: 1.3 },
+        { number: 101, name: "Mendelévio", symbol: "Md", group: 15, period: 10, mass: 258, category: "actinide", electronegativity: 1.3 },
+        { number: 102, name: "Nobélio", symbol: "No", group: 16, period: 10, mass: 259, category: "actinide", electronegativity: 1.3 },
+        { number: 103, name: "Laurêncio", symbol: "Lr", group: 17, period: 10, mass: 262, category: "actinide", electronegativity: 1.3 },
+        { number: 104, name: "Rutherfórdio", symbol: "Rf", group: 4, period: 7, mass: 267, category: "transition", electronegativity: null },
+        { number: 105, name: "Dúbnio", symbol: "Db", group: 5, period: 7, mass: 268, category: "transition", electronegativity: null },
+        { number: 106, name: "Seabórgio", symbol: "Sg", group: 6, period: 7, mass: 271, category: "transition", electronegativity: null },
+        { number: 107, name: "Bóhrio", symbol: "Bh", group: 7, period: 7, mass: 272, category: "transition", electronegativity: null },
+        { number: 108, name: "Hássio", symbol: "Hs", group: 8, period: 7, mass: 277, category: "transition", electronegativity: null },
+        { number: 109, name: "Meitnério", symbol: "Mt", group: 9, period: 7, mass: 276, category: "unknown", electronegativity: null },
+        { number: 110, name: "Darmstádio", symbol: "Ds", group: 10, period: 7, mass: 281, category: "unknown", electronegativity: null },
+        { number: 111, name: "Roentgênio", symbol: "Rg", group: 11, period: 7, mass: 280, category: "unknown", electronegativity: null },
+        { number: 112, name: "Copernício", symbol: "Cn", group: 12, period: 7, mass: 285, category: "transition", electronegativity: null },
+        { number: 113, name: "Nihônio", symbol: "Nh", group: 13, period: 7, mass: 284, category: "unknown", electronegativity: null },
+        { number: 114, name: "Fleróvio", symbol: "Fl", group: 14, period: 7, mass: 289, category: "unknown", electronegativity: null },
+        { number: 115, name: "Moscóvio", symbol: "Mc", group: 15, period: 7, mass: 288, category: "unknown", electronegativity: null },
+        { number: 116, name: "Livermório", symbol: "Lv", group: 16, period: 7, mass: 293, category: "unknown", electronegativity: null },
+        { number: 117, name: "Tenesso", symbol: "Ts", group: 17, period: 7, mass: 294, category: "unknown", electronegativity: null },
+        { number: 118, name: "Oganessônio", symbol: "Og", group: 18, period: 7, mass: 294, category: "unknown", electronegativity: null }
     ];
 
     const SUBSTANCE_DATABASE = {
@@ -165,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { reactants: { P4: 1, O2: 5 }, products: { P4O10: 1 } },
     ];
 
+    // --- GLOSSÁRIO EXPANDIDO ---
     const GLOSSARY_DATA = {
         "Átomo": {
             definition: "A unidade fundamental da matéria, composta por um núcleo (com prótons e nêutrons) e elétrons que orbitam este núcleo.",
@@ -205,6 +206,26 @@ document.addEventListener('DOMContentLoaded', () => {
         "Número de Massa (A)": {
             definition: "A soma do número de prótons e nêutrons no núcleo de um átomo.",
             example: "O isótopo Carbono-14 possui 6 prótons e 8 nêutrons, então seu número de massa é 14."
+        },
+        "Isótopos": {
+            definition: "Átomos do mesmo elemento químico (mesmo número de prótons) que possuem diferentes números de nêutrons e, portanto, diferentes números de massa.",
+            example: "O Carbono-12 (6 prótons, 6 nêutrons) e o Carbono-14 (6 prótons, 8 nêutrons) são isótopos."
+        },
+        "pH": {
+            definition: "Potencial Hidrogeniônico. Uma escala logarítmica que mede a acidez ou alcalinidade de uma solução aquosa. Varia de 0 (muito ácido) a 14 (muito alcalino), com 7 sendo neutro.",
+            example: "O suco de limão tem um pH em torno de 2 (ácido), enquanto a água pura tem pH 7 (neutro)."
+        },
+        "Solução": {
+            definition: "Uma mistura homogênea composta por um soluto (substância dissolvida) e um solvente (substância que dissolve).",
+            example: "Água com açúcar é uma solução onde o açúcar é o soluto e a água é o solvente."
+        },
+        "Reação de Oxirredução": {
+            definition: "Uma reação química onde ocorre a transferência de elétrons entre espécies químicas. Envolve processos de oxidação (perda de elétrons) e redução (ganho de elétrons).",
+            example: "A ferrugem do ferro é uma reação de oxirredução onde o ferro oxida (perde elétrons para o oxigênio)."
+        },
+        "Estado de Oxidação (Nox)": {
+            definition: "Um número atribuído a um elemento em um composto que representa o número de elétrons que o átomo perdeu ou ganhou.",
+            example: "Na água (H₂O), o Nox do Hidrogênio é +1 e o do Oxigênio é -2."
         }
     };
 
@@ -289,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateElectronShells();
     }
 
-    function updateElectronShells() {
+function updateElectronShells() {
         const viz = document.getElementById('atom-visualization');
         viz.querySelectorAll('.electron').forEach(e => e.remove());
         let remainingElectrons = currentAtom.electrons;
@@ -312,8 +333,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 viz.appendChild(electron);
             }
             remainingElectrons -= electronsInShell;
-        });
+        }); // ✅ Corrigido fechamento do forEach
     }
+
+    
 
     // --- MÓDULO 2: TABELA PERIÓDICA E MODAL ---
     function generatePeriodicTable() {
@@ -329,15 +352,22 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Adiciona placeholders para os Lantanídeos e Actinídeos na tabela principal
             if (element.number === 57) {
-                tile.innerHTML += `<div class="atomic-number">57-71</div><div class="symbol">*</div>`;
-                tile.style.background = '#ff9ff3';
+                const placeholder = document.createElement('div');
+                placeholder.className = 'element-tile lanthanide';
+                placeholder.innerHTML = `<div class="atomic-number">57-71</div><div class="symbol">*</div>`;
+                placeholder.style.gridColumn = 3;
+                placeholder.style.gridRow = 6;
+                container.appendChild(placeholder);
             } else if (element.number === 89) {
-                tile.innerHTML += `<div class="atomic-number">89-103</div><div class="symbol">**</div>`;
-                tile.style.background = '#f368e0';
-            } else {
-                 tile.innerHTML = `<div class="atomic-number">${element.number}</div><div class="symbol">${element.symbol}</div><div class="name">${element.name}</div>`;
+                 const placeholder = document.createElement('div');
+                placeholder.className = 'element-tile actinide';
+                placeholder.innerHTML = `<div class="atomic-number">89-103</div><div class="symbol">**</div>`;
+                placeholder.style.gridColumn = 3;
+                placeholder.style.gridRow = 7;
+                container.appendChild(placeholder);
             }
-
+            
+            tile.innerHTML = `<div class="atomic-number">${element.number}</div><div class="symbol">${element.symbol}</div><div class="name">${element.name}</div>`;
             tile.addEventListener('click', () => openModalWithElement(element));
             container.appendChild(tile);
         });
@@ -401,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openModalWithElement(element) {
         const categoryName = element.category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        const detailsHTML = `<h3>${element.name} (${element.symbol})</h3><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; text-align: left; padding: 10px; font-size: 1.1em;"><div><strong>Número Atômico:</strong> ${element.number}</div><div><strong>Massa Atômica:</strong> ${element.mass || 'N/A'} u</div><div><strong>Grupo:</strong> ${element.group}</div><div><strong>Período:</strong> ${element.period}</div><div><strong>Categoria:</strong> ${categoryName}</div></div>`;
+        const detailsHTML = `<h3>${element.name} (${element.symbol})</h3><div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; text-align: left; padding: 10px; font-size: 1.1em;"><div><strong>Número Atômico:</strong> ${element.number}</div><div><strong>Massa Atômica:</strong> ${element.mass || 'N/A'} u</div><div><strong>Grupo:</strong> ${element.group}</div><div><strong>Período:</strong> ${element.period > 7 ? element.period - 3 : element.period}</div><div><strong>Categoria:</strong> ${categoryName}</div></div>`;
         modalDetailsContent.innerHTML = detailsHTML;
         modalOverlay.classList.remove('hidden');
         setTimeout(() => modalOverlay.classList.add('visible'), 10);
@@ -420,7 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let error = false;
         for (const [symbol, count] of Object.entries(elements)) {
             const element = ELEMENTS_DATA.find(e => e.symbol === symbol);
-            if (element) {
+            if (element && element.mass) {
                 const mass = element.mass * count;
                 totalMass += mass;
                 breakdown.push(`${count}×${symbol} = ${count}×${element.mass.toFixed(3)} = ${mass.toFixed(3)} g/mol`);
@@ -532,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let html = '';
             const formulas = Object.keys(side);
             formulas.forEach((formula, index) => {
-                html += `<div><input type="number" class="coefficient-input" min="1" value="1" data-formula="${formula}"> <span>${formula}</span></div>`;
+                html += `<div class="equation-component"><input type="number" class="coefficient-input" min="1" value="1" data-formula="${formula}"> <span>${formula}</span></div>`;
                 if (index < formulas.length - 1) {
                     html += ' <span>+</span> ';
                 }
@@ -540,7 +570,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return html;
         };
         equationContainer.innerHTML = createSideHTML(currentEquation.reactants);
-        equationContainer.innerHTML += ' <span style="margin: 0 15px;">→</span> ';
+        equationContainer.innerHTML += ' <span>→</span> ';
         equationContainer.innerHTML += createSideHTML(currentEquation.products);
         document.querySelectorAll('.coefficient-input').forEach(input => {
             input.addEventListener('input', updateBalanceCount);
@@ -727,12 +757,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- MÓDULO 8: GLOSSÁRIO ---
-    function populateGlossary() {
+    function populateGlossary(filter = '') {
         const container = document.getElementById('glossary-container');
         if (!container) return;
         container.innerHTML = '';
-        const sortedTerms = Object.keys(GLOSSARY_DATA).sort();
-        for (const term of sortedTerms) {
+        
+        const lowerCaseFilter = filter.toLowerCase();
+        const filteredTerms = Object.keys(GLOSSARY_DATA).filter(term => 
+            term.toLowerCase().includes(lowerCaseFilter)
+        ).sort();
+
+        if (filteredTerms.length === 0) {
+            container.innerHTML = `<div class="no-results">Nenhum termo encontrado para "${filter}"</div>`;
+            return;
+        }
+
+        for (const term of filteredTerms) {
             const termDiv = document.createElement('div');
             termDiv.className = 'glossary-term';
             termDiv.textContent = term;
@@ -753,9 +793,17 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOverlay.classList.remove('hidden');
         setTimeout(() => modalOverlay.classList.add('visible'), 10);
     }
-
-    // --- EVENT LISTENERS (OUVINTES DE EVENTOS) ---
-    function initializeEventListeners() {
+    
+    // --- INICIALIZAÇÃO E EVENT LISTENERS ---
+    function initialize() {
+        // Gerar conteúdo dinâmico
+        generatePeriodicTable();
+        generateLegend();
+        generateMiniPeriodicTable();
+        populateGlossary();
+        loadNewEquation();
+        
+        // Configurar todos os ouvintes de eventos
         // Navegação Principal
         document.querySelectorAll('.nav-button').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -777,7 +825,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('remove-electron').addEventListener('click', () => { if (currentAtom.electrons > 0) currentAtom.electrons--; updateAtomDisplay(); });
         document.getElementById('reset-button').addEventListener('click', () => { currentAtom = { protons: 0, neutrons: 0, electrons: 0 }; updateAtomDisplay(); });
         document.getElementById('random-element').addEventListener('click', () => {
-            const randomEl = ELEMENTS_DATA.find(el => el.period <= 7); // Pega um elemento da tabela principal
+            const elementsFromMainTable = ELEMENTS_DATA.filter(el => el.period <= 7 && el.mass);
+            const randomEl = elementsFromMainTable[Math.floor(Math.random() * elementsFromMainTable.length)];
             if(randomEl) {
                 currentAtom.protons = randomEl.number;
                 currentAtom.electrons = randomEl.number;
@@ -866,19 +915,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Módulo 7: Ligações Químicas
         document.getElementById('combine-atoms-btn').addEventListener('click', determineAndShowBond);
         document.getElementById('reset-bond-btn').addEventListener('click', resetBondSimulator);
-    }
-    
-    // --- INICIALIZAÇÃO ---
-    function initialize() {
-        // Preencher o conteúdo que precisa ser gerado dinamicamente
-        generatePeriodicTable();
-        generateLegend();
-        generateMiniPeriodicTable();
-        populateGlossary();
-        loadNewEquation();
-        
-        // Configurar todos os ouvintes de eventos
-        initializeEventListeners();
+
+        // Módulo 8: Glossário
+        document.getElementById('glossary-search-input').addEventListener('input', (e) => {
+            populateGlossary(e.target.value);
+        });
 
         // Exibir o primeiro módulo e atualizar a tela inicial
         showModule('module1-content');

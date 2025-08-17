@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Química Interativo v6.0</title>
+    <title>Simulador de Química Interativo v6.1</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1><i class="fas fa-flask"></i> Simulador de Química Interativo v6.0</h1>
+        <h1><i class="fas fa-flask"></i> Simulador de Química Interativo v6.1</h1>
         <nav>
             <button id="nav-module1" class="nav-button active">
                 <i class="fas fa-atom"></i> Estrutura Atômica
@@ -41,7 +41,6 @@
     <main>
         <!-- Módulo 1: Estrutura Atômica -->
         <div id="module1-content" class="module-content fade-in">
-            <!-- Conteúdo do Módulo 1 permanece o mesmo -->
             <div id="atom-builder">
                 <section class="panel" id="controls-panel">
                     <h2><i class="fas fa-atom"></i> Controles do Átomo</h2>
@@ -123,7 +122,7 @@
             </div>
         </div>
 
-        <!-- Módulo 2: Tabela Periódica ATUALIZADO -->
+        <!-- Módulo 2: Tabela Periódica -->
         <div id="module2-content" class="module-content hidden">
             <section class="panel">
                 <h2><i class="fas fa-table"></i> Tabela Periódica Interativa</h2>
@@ -136,7 +135,7 @@
             </section>
         </div>
 
-        <!-- Módulos 3 a 8 (sem alterações estruturais) -->
+        <!-- Módulo 3: Matéria e Medidas -->
         <div id="module3-content" class="module-content hidden">
              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px;">
                 <section class="panel">
@@ -176,6 +175,7 @@
             </div>
         </div>
 
+        <!-- Módulo 4: Ferramentas de Cálculo -->
         <div id="module4-content" class="module-content hidden">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px;">
                 <section class="panel">
@@ -203,6 +203,7 @@
             </div>
         </div>
 
+        <!-- Módulo 5: Quiz Interativo -->
         <div id="module5-content" class="module-content hidden">
             <section class="panel">
                 <h2 class="module-header-5"><i class="fas fa-question-circle"></i> Quiz de Química</h2>
@@ -223,6 +224,7 @@
             </section>
         </div>
 		
+        <!-- Módulo 6: Balanceamento -->
         <div id="module6-content" class="module-content hidden">
             <section class="panel">
                 <h2 class="module-header-6"><i class="fas fa-exchange-alt"></i> Balanceamento de Equações</h2>
@@ -239,6 +241,7 @@
             </section>
         </div>
 
+        <!-- Módulo 7: Ligações Químicas -->
         <div id="module7-content" class="module-content hidden">
             <section class="panel">
                 <h2 class="module-header-7"><i class="fas fa-link"></i> Simulador de Ligações Químicas</h2>
@@ -273,11 +276,14 @@
             </section>
         </div>
         
+        <!-- Módulo 8: Glossário -->
         <div id="module8-content" class="module-content hidden">
             <section class="panel">
                 <h2 class="module-header-8"><i class="fas fa-book"></i> Glossário de Química</h2>
-                <p>Clique em um termo para ver sua definição e um exemplo.</p>
+                <p>Pesquise um termo ou clique em um da lista para ver sua definição.</p>
+                <input type="text" id="glossary-search-input" placeholder="&#xf002; Pesquisar termo...">
                 <div id="glossary-container">
+                    <!-- Termos serão inseridos aqui via JavaScript -->
                 </div>
             </section>
         </div>
